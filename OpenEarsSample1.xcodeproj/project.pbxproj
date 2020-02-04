@@ -13,6 +13,11 @@
 		8CBC35B623E41EB8003A26D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBC35B423E41EB8003A26D9 /* Main.storyboard */; };
 		8CBC35B823E41EBA003A26D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CBC35B723E41EBA003A26D9 /* Assets.xcassets */; };
 		8CBC35BB23E41EBA003A26D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBC35B923E41EBA003A26D9 /* LaunchScreen.storyboard */; };
+		8CBC35C623E42087003A26D9 /* Slt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBC35C323E42087003A26D9 /* Slt.framework */; };
+		8CBC35C723E42087003A26D9 /* OpenEars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBC35C423E42087003A26D9 /* OpenEars.framework */; };
+		8CBC35C823E42087003A26D9 /* AcousticModelEnglish.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8CBC35C523E42087003A26D9 /* AcousticModelEnglish.bundle */; };
+		8CBC35CB23E4235A003A26D9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBC35CA23E4235A003A26D9 /* AudioToolbox.framework */; };
+		8CBC35CD23E42364003A26D9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBC35CC23E42364003A26D9 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,12 @@
 		8CBC35B723E41EBA003A26D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CBC35BA23E41EBA003A26D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CBC35BC23E41EBA003A26D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CBC35C323E42087003A26D9 /* Slt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Slt.framework; sourceTree = "<group>"; };
+		8CBC35C423E42087003A26D9 /* OpenEars.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenEars.framework; sourceTree = "<group>"; };
+		8CBC35C523E42087003A26D9 /* AcousticModelEnglish.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AcousticModelEnglish.bundle; sourceTree = "<group>"; };
+		8CBC35CA23E4235A003A26D9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8CBC35CC23E42364003A26D9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8CBC35CE23E42492003A26D9 /* OpenEarsHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenEarsHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +42,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CBC35CD23E42364003A26D9 /* AVFoundation.framework in Frameworks */,
+				8CBC35C623E42087003A26D9 /* Slt.framework in Frameworks */,
+				8CBC35C723E42087003A26D9 /* OpenEars.framework in Frameworks */,
+				8CBC35CB23E4235A003A26D9 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,8 +55,11 @@
 		8CBC35A223E41EB8003A26D9 = {
 			isa = PBXGroup;
 			children = (
+				8CBC35CE23E42492003A26D9 /* OpenEarsHeader.h */,
 				8CBC35AD23E41EB8003A26D9 /* OpenEarsSample1 */,
 				8CBC35AC23E41EB8003A26D9 /* Products */,
+				8CBC35C223E42087003A26D9 /* Framework */,
+				8CBC35C923E4235A003A26D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,6 +83,25 @@
 				8CBC35BC23E41EBA003A26D9 /* Info.plist */,
 			);
 			path = OpenEarsSample1;
+			sourceTree = "<group>";
+		};
+		8CBC35C223E42087003A26D9 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				8CBC35C323E42087003A26D9 /* Slt.framework */,
+				8CBC35C423E42087003A26D9 /* OpenEars.framework */,
+				8CBC35C523E42087003A26D9 /* AcousticModelEnglish.bundle */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		8CBC35C923E4235A003A26D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CBC35CC23E42364003A26D9 /* AVFoundation.framework */,
+				8CBC35CA23E4235A003A26D9 /* AudioToolbox.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CBC35BB23E41EBA003A26D9 /* LaunchScreen.storyboard in Resources */,
+				8CBC35C823E42087003A26D9 /* AcousticModelEnglish.bundle in Resources */,
 				8CBC35B823E41EBA003A26D9 /* Assets.xcassets in Resources */,
 				8CBC35B623E41EB8003A26D9 /* Main.storyboard in Resources */,
 			);
@@ -286,6 +324,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GY7BG2G9TC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				INFOPLIST_FILE = OpenEarsSample1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -293,6 +335,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beckos.com.OpenEarsSample1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/tatsuyamoriguchi/Documents/OpenEarsSample1/OpenEarsHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -304,6 +347,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GY7BG2G9TC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				INFOPLIST_FILE = OpenEarsSample1/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -311,6 +358,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beckos.com.OpenEarsSample1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/tatsuyamoriguchi/Documents/OpenEarsSample1/OpenEarsHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
