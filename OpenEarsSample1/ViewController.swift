@@ -44,7 +44,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
 
 
         // Perform text-to-speech
-        let text2Speech = "A short statement."
+        let text2Speech = "Hello Dave. You're looking well today."
         self.fliteController.say(_:text2Speech, with:self.slt)
         hypothesisLabel.text = text2Speech
 
