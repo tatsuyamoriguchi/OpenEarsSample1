@@ -30,9 +30,19 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XyF-1m-4Xi">
+                                <rect key="frame" x="20" y="505" width="374" height="159"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XyF-1m-4Xi" secondAttribute="trailing" constant="20" id="2J7-xS-gZO"/>
+                            <constraint firstItem="XyF-1m-4Xi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="FW3-kA-kKc"/>
+                            <constraint firstItem="XyF-1m-4Xi" firstAttribute="top" secondItem="jHD-E5-IYc" secondAttribute="bottom" constant="40" id="W6h-Gw-Ku5"/>
                             <constraint firstItem="8Fb-95-7p4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Wys-FI-3W1"/>
                             <constraint firstItem="jHD-E5-IYc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jBo-Kq-ET7"/>
                             <constraint firstItem="jHD-E5-IYc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jt0-om-HCF"/>
@@ -42,12 +52,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="messageLabel" destination="XyF-1m-4Xi" id="oIc-Cs-vNR"/>
                         <outlet property="textLabel" destination="8Fb-95-7p4" id="1RP-bL-Qwm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="141" y="89"/>
+            <point key="canvasLocation" x="140.57971014492756" y="88.392857142857139"/>
         </scene>
     </scenes>
 </document>
