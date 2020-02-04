@@ -49,7 +49,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     func lmGeneratorFunc() {
 
          let lmGenerator = OELanguageModelGenerator()
-         let words = ["Hello Hal", "Get data", "Delete", "Update", "Open the pod bay doors"] // These can be lowercase, uppercase, or mixed-case.
+         let words = ["Hello Hal", "Get", "Delete", "Update"] // These can be lowercase, uppercase, or mixed-case.
          let name = "NameIWantForMyLanguageModelFiles"
          let err: Error! = lmGenerator.generateLanguageModel(from: words, withFilesNamed: name, forAcousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"))
 
@@ -79,6 +79,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     func pocketsphinxDidReceiveHypothesis(_ hypothesis: String!, recognitionScore: String!, utteranceID: String!) { // Something was heard
         
         print("Local callback: The received hypothesis is \(hypothesis!) with a score of \(recognitionScore!) and an ID of \(utteranceID!)")
+        
         messageLabel.text = "Local callback: The received hypothesis is \(hypothesis!) with a score of \(recognitionScore!) and an ID of \(utteranceID!)" + "\n" + messageLabel.text! + "\n"
         hypothesisLabel.text = "You probably said " + hypothesis
     }
@@ -99,7 +100,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     // An optional delegate method of OEEventsObserver which informs that Pocketsphinx detected speech and is starting to process it.
     func pocketsphinxDidDetectSpeech() {
         print("Local callback: Pocketsphinx has detected speech.") // Log it.
-        
+        messageLabel.text = ""
         messageLabel.text = "Local callback: Pocketsphinx has detected speech." + "\n" + messageLabel.text! + "\n"
         
     }
