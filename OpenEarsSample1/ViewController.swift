@@ -13,6 +13,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     var openEarsEventsObserver = OEEventsObserver()
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var hypothesisLabel: UILabel!
     
     @IBAction func startOnPressed(_ sender: UIButton) {
 
@@ -76,8 +77,10 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     }
     
     func pocketsphinxDidReceiveHypothesis(_ hypothesis: String!, recognitionScore: String!, utteranceID: String!) { // Something was heard
+        
         print("Local callback: The received hypothesis is \(hypothesis!) with a score of \(recognitionScore!) and an ID of \(utteranceID!)")
         messageLabel.text = "Local callback: The received hypothesis is \(hypothesis!) with a score of \(recognitionScore!) and an ID of \(utteranceID!)" + "\n" + messageLabel.text! + "\n"
+        hypothesisLabel.text = "You probably said " + hypothesis
     }
        
     // An optional delegate method of OEEventsObserver which informs that the Pocketsphinx recognition loop has entered its actual loop.
