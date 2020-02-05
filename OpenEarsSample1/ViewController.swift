@@ -27,7 +27,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
         if checkMicPermission() == true {
             lmGeneratorFunc()
             textLabel.text = "Button Pressed"
-            messageLabel.text = "This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. "
+            
         } else {
             pocketsphinxFailedNoMicPermissions()
             textLabel.text = "Press Again"
@@ -71,8 +71,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
 
          if(err != nil) {
             let message = "Error while creating initial language model: \(err)"
-             print(message)
-            messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+             messageOut(message: message)
          } else {
              let lmPath = lmGenerator.pathToSuccessfullyGeneratedLanguageModel(withRequestedName: name) // Convenience method to reference the path of a language model known to have been created successfully.
              let dicPath = lmGenerator.pathToSuccessfullyGeneratedDictionary(withRequestedName: name) // Convenience method to reference the path of a dictionary known to have been created successfully.
@@ -96,9 +95,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     func pocketsphinxDidReceiveHypothesis(_ hypothesis: String!, recognitionScore: String!, utteranceID: String!) { // Something was heard
         
         let message = "Local callback: The received hypothesis is \(hypothesis!) with a score of \(recognitionScore!) and an ID of \(utteranceID!)"
-        print(message)
-        
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
         hypothesisLabel.text = "You probably said " + hypothesis
     }
        
@@ -106,39 +103,35 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     // This might be useful in debugging a conflict between another sound class and Pocketsphinx.
     func pocketsphinxRecognitionLoopDidStart() {
         let message = "Local callback: Pocketsphinx started."
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageLabel.text = ""
     }
     
     // An optional delegate method of OEEventsObserver which informs that Pocketsphinx is now listening for speech.
     func pocketsphinxDidStartListening() {
         let message = "Local callback: Pocketsphinx is now listening."
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
+        
     }
     
     // An optional delegate method of OEEventsObserver which informs that Pocketsphinx detected speech and is starting to process it.
     func pocketsphinxDidDetectSpeech() {
         let message = "Local callback: Pocketsphinx has detected speech."
-        print(message) // Log it.
         messageLabel.text = ""
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
-        
+
+        messageOut(message: message)
     }
     
     // An optional delegate method of OEEventsObserver which informs that Pocketsphinx detected a second of silence, indicating the end of an utterance.
     func pocketsphinxDidDetectFinishedSpeech() {
         let message = "Local callback: Pocketsphinx has detected a second of silence, concluding an utterance."
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
     }
     
     // An optional delegate method of OEEventsObserver which informs that Pocketsphinx has exited its recognition loop, most
     // likely in response to the OEPocketsphinxController being told to stop listening via the stopListening method.
     func pocketsphinxDidStopListening() {
         let message = "Local callback: Pocketsphinx has stopped listening."
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
     }
     
     // An optional delegate method of OEEventsObserver which informs that Pocketsphinx is still in its listening loop but it is not
@@ -147,8 +140,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     // or as a result of the OEPocketsphinxController being told to suspend recognition via the suspendRecognition method.
     func pocketsphinxDidSuspendRecognition() {
         let message = "Local callback: Pocketsphinx has suspended recognition."
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
     }
     
     // An optional delegate method of OEEventsObserver which informs that Pocketsphinx is still in its listening loop and after recognition
@@ -157,64 +149,66 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     // or as a result of the OEPocketsphinxController being told to resume recognition via the resumeRecognition method.
     func pocketsphinxDidResumeRecognition() {
         let message = "Local callback: Pocketsphinx has resumed recognition."
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+
+        messageOut(message: message)
     }
     
     // An optional delegate method which informs that Pocketsphinx switched over to a new language model at the given URL in the course of
     // recognition. This does not imply that it is a valid file or that recognition will be successful using the file.
     func pocketsphinxDidChangeLanguageModel(toFile newLanguageModelPathAsString: String!, andDictionary newDictionaryPathAsString: String!) {
         let message = "Local callback: Pocketsphinx is now using the following language model: \n\(newLanguageModelPathAsString!) and the following dictionary: \(newDictionaryPathAsString!)"
-        print(message)
-        
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+
+        messageOut(message: message)
     }
     
     // An optional delegate method of OEEventsObserver which informs that Flite is speaking, most likely to be useful if debugging a
     // complex interaction between sound classes. You don't have to do anything yourself in order to prevent Pocketsphinx from listening to Flite talk and trying to recognize the speech.
     func fliteDidStartSpeaking() {
         let message = "Local callback: Flite has started speaking"
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
+        
     }
     
     // An optional delegate method of OEEventsObserver which informs that Flite is finished speaking, most likely to be useful if debugging a
     // complex interaction between sound classes.
     func fliteDidFinishSpeaking() {
         let message = "Local callback: Flite has finished speaking"
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
+        
     }
     
     func pocketSphinxContinuousSetupDidFail(withReason reasonForFailure: String!) { // This can let you know that something went wrong with the recognition loop startup. Turn on [OELogging startOpenEarsLogging] to learn why.
         let message = "Local callback: Setting up the continuous recognition loop has failed for the reason \(reasonForFailure), please turn on OELogging.startOpenEarsLogging() to learn more."
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
     }
     
     func pocketSphinxContinuousTeardownDidFail(withReason reasonForFailure: String!) { // This can let you know that something went wrong with the recognition loop startup. Turn on OELogging.startOpenEarsLogging() to learn why.
         let message = "Local callback: Tearing down the continuous recognition loop has failed for the reason \(reasonForFailure)"
-        print(message) // Log it.
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
+        
     }
     
     /** Pocketsphinx couldn't start because it has no mic permissions (will only be returned on iOS7 or later).*/
     func pocketsphinxFailedNoMicPermissions() {
         let message = "Local callback: The user has never set mic permissions or denied permission to this app's mic, so listening will not start."
-        print(message)
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+        messageOut(message: message)
     }
     
     /** The user prompt to get mic permissions, or a check of the mic permissions, has completed with a true or a false result  (will only be returned on iOS7 or later).*/
     
     func micPermissionCheckCompleted(withResult: Bool) {
         let message = "Local callback: mic check completed."
-        print(message)
-        messageLabel.text = message + "\n" + messageLabel.text! + "\n"
-        
-        
+        messageOut(message: message)
     }
     
+
+    func messageOut(message: String) {
+        print(message)
+         messageLabel.text = message + "\n" + messageLabel.text! + "\n"
+    }
+
+
+
     func checkMicPermission() -> Bool {
 
         var permissionCheck: Bool = false
