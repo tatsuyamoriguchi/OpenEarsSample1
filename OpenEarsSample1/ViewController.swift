@@ -104,6 +104,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     func pocketsphinxRecognitionLoopDidStart() {
         let message = "Local callback: Pocketsphinx started."
         messageLabel.text = ""
+        messageOut(message: message)
     }
     
     // An optional delegate method of OEEventsObserver which informs that Pocketsphinx is now listening for speech.
