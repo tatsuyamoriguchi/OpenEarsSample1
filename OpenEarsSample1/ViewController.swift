@@ -43,11 +43,6 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
         self.openEarsEventsObserver.delegate = self
 
 
-        // Perform text-to-speech
-//        let text2Speech = "Hello Dave. You're looking well today."
-//        self.fliteController.say(_:text2Speech, with:self.slt)
-//        hypothesisLabel.text = text2Speech
-
         text2Speech(text2Speech: "Hello, Dave. You're looking well today. Press the button below to start. Say \"Hello, Hal\", \"Get\", \"Update\", or \"Delete\".")
 
         if checkMicPermission() == true {
