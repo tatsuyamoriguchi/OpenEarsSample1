@@ -37,11 +37,17 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdI-9x-d37">
-                                <rect key="frame" x="20" y="279" width="374" height="43"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdI-9x-d37">
+                                <rect key="frame" x="20" y="293" width="374" height="29"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Say &quot;Hello, Hal&quot;, &quot;Get&quot;, &quot;Update&quot;, or &quot;Delete&quot; after pressing the button below." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFi-8U-z1g">
+                                <rect key="frame" x="20" y="192" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -53,9 +59,12 @@
                             <constraint firstItem="8Fb-95-7p4" firstAttribute="top" secondItem="qdI-9x-d37" secondAttribute="bottom" constant="60" id="Owz-34-UKo"/>
                             <constraint firstItem="XyF-1m-4Xi" firstAttribute="top" secondItem="jHD-E5-IYc" secondAttribute="bottom" constant="40" id="W6h-Gw-Ku5"/>
                             <constraint firstItem="8Fb-95-7p4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Wys-FI-3W1"/>
+                            <constraint firstItem="qdI-9x-d37" firstAttribute="top" secondItem="sFi-8U-z1g" secondAttribute="bottom" constant="60" id="ZGI-H0-Rm4"/>
                             <constraint firstItem="qdI-9x-d37" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="egT-WV-uQO"/>
                             <constraint firstItem="jHD-E5-IYc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jBo-Kq-ET7"/>
                             <constraint firstItem="jHD-E5-IYc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="jt0-om-HCF"/>
+                            <constraint firstAttribute="trailing" secondItem="sFi-8U-z1g" secondAttribute="trailing" constant="20" id="ldF-Hv-eRe"/>
+                            <constraint firstItem="sFi-8U-z1g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ph7-aD-uoI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Fb-95-7p4" secondAttribute="trailing" constant="20" id="qUn-Gn-gFH"/>
                             <constraint firstItem="jHD-E5-IYc" firstAttribute="top" secondItem="8Fb-95-7p4" secondAttribute="bottom" constant="20" id="xyd-iJ-Bib"/>
                         </constraints>

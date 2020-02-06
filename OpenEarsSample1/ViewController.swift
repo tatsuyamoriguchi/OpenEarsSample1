@@ -44,10 +44,11 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
 
 
         // Perform text-to-speech
-        let text2Speech = "Hello Dave. You're looking well today."
-        self.fliteController.say(_:text2Speech, with:self.slt)
-        hypothesisLabel.text = text2Speech
+//        let text2Speech = "Hello Dave. You're looking well today."
+//        self.fliteController.say(_:text2Speech, with:self.slt)
+//        hypothesisLabel.text = text2Speech
 
+        text2Speech(text2Speech: "Hello, Dave. You're looking well today. Press the button below to start. Say \"Hello, Hal\", \"Get\", \"Update\", or \"Delete\".")
 
         if checkMicPermission() == true {
             textLabel.text = "Mic access was permitted"
@@ -59,6 +60,11 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
         
     }
  
+    // To perform text-to-speech
+    func text2Speech(text2Speech: String) {
+        self.fliteController.say(_:text2Speech, with:self.slt)
+        hypothesisLabel.text = text2Speech
+    }
 
     // To recognize speech
     func lmGeneratorFunc() {
@@ -96,7 +102,9 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
         
         let message = "Local callback: The received hypothesis is \(hypothesis!) with a score of \(recognitionScore!) and an ID of \(utteranceID!)"
         messageOut(message: message)
-        hypothesisLabel.text = "You probably said " + hypothesis
+        let recognizedText = "You probably said " + hypothesis
+        hypothesisLabel.text = recognizedText
+        text2Speech(text2Speech: recognizedText)
     }
        
     // An optional delegate method of OEEventsObserver which informs that the Pocketsphinx recognition loop has entered its actual loop.
@@ -111,6 +119,7 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
     func pocketsphinxDidStartListening() {
         let message = "Local callback: Pocketsphinx is now listening."
         messageOut(message: message)
+        text2Speech(text2Speech: message)
         
     }
     
