@@ -66,10 +66,39 @@ class ViewController: UIViewController,OEEventsObserverDelegate {
 
          let lmGenerator = OELanguageModelGenerator()
         // Vocabulary (a language model) to recognize
-         let words = ["Hello Hal", "Get", "Delete", "Update"] // These can be lowercase, uppercase, or mixed-case.
+        let words = ["HELLO COMPUTER", "GREETINGS ROBOT", "DO THE FOLLOWING", "INSTRUCTION", "GO", "MOVE", "10", "20","30", "LEFT", "RIGHT", "FORWARD", "THANK YOU"] // These can be lowercase, uppercase, or mixed-case.
          let name = "NameIWantForMyLanguageModelFiles"
          let err: Error! = lmGenerator.generateLanguageModel(from: words, withFilesNamed: name, forAcousticModelAtPath: OEAcousticModel.path(toModel: "AcousticModelEnglish"))
 
+        let grammar = [
+            ThisWillBeSaidOnce : [
+                [ OneOfTheseCanBeSaidOnce : ["HELLO COMPUTER", "GREETINGS ROBOT"]],
+                [ OneOfTheseWillBeSaidOnce : ["DO THE FOLLOWING", "INSTRUCTION"]],
+                [ OneOfTheseWillBeSaidOnce : ["GO", "MOVE"]],
+                [ThisWillBeSaidOnce : [
+                    [ OneOfTheseWillBeSaidOnce : ["10", "20","30"]],
+                    [ OneOfTheseWillBeSaidOnce : ["LEFT", "RIGHT", "FORWARD"]]
+                    ]],
+                [ ThisCanBeSaidOnce : ["THANK YOU"]]
+            ]
+        ]
+//        So as examples, here are some sentences that this ruleset will report as hypotheses from user utterances:
+//
+//        "HELLO COMPUTER DO THE FOLLOWING GO 20 LEFT 30 RIGHT 10 FORWARD THANK YOU"
+//        "GREETINGS ROBOT DO THE FOLLOWING MOVE 10 FORWARD THANK YOU"
+//        "INSTRUCTION 20 LEFT 20 LEFT 20 LEFT 20 LEFT"
+//        But it will not report hypotheses for sentences such as the following which are not allowed by the rules:
+//
+//        "HELLO COMPUTER HELLO COMPUTER"
+//        "MOVE 10"
+//        "GO RIGHT"
+        
+        
+        
+        let grammarName = "GrammerIWantForMyLanguageModelFiles"
+        lmGenerator.generateGrammar(from: grammar, withFilesNamed: grammarName, forAcousticModelAtPath: "AcousticModelEnglish")
+        
+        
          if(err != nil) {
             let message = "Error while creating initial language model: \(err)"
              messageOut(message: message)
